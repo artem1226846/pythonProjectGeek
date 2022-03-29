@@ -61,3 +61,38 @@ class Costume(Clothes):
 a = Coat(int(input('Укажите размер для пальто: ')))
 b = Costume(int(input('Укажите рост для костюма: ')))
 print('Общий расход ткани = ', a.fab_cons + b.fab_cons, end='')
+
+# task 3
+class Cell:
+    def __init__(self, cells):
+        self.cells = cells
+
+    def __str__(self):
+        return f'Клетка с количеством ячеек равным {self.cells}'
+
+    def __add__(self, other):
+        return Cell(self.cells + other.cells)
+
+    def __sub__(self, other):
+        x = self.cells - other.cells
+        if x == 0:
+            return 'Клетки одинакового размера'
+        else:
+            return Cell(abs(x))
+
+    def __mul__(self, other):
+        return Cell(self.cells * other.cells)
+
+    def __truediv__(self, other):
+        x = max(self.cells, other.cells)
+        y = min(self.cells, other.cells)
+        return Cell(x // y)
+
+    def make_order(self, cells):
+        x = self.cells % cells
+        y = self.cells // cells
+        if x == 0:
+            return ('*' * cells + '\n') * y
+        else:
+            return ('*' * cells + '\n') * y + '*' * x
+
