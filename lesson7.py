@@ -33,3 +33,31 @@ class Matrix:
 obj = Matrix([[1,2,3,4],[1,2,3,2],[2,3,2,3]])
 obj2 = Matrix([[1,2,3,4],[1,2,3,2],[2,3,2,3]])
 print(obj+obj2)
+
+# task 2
+from abc import ABC, abstractmethod
+
+class Clothes(ABC):
+    @abstractmethod
+    def fab_cons(self):
+        pass
+
+class Coat(Clothes):
+    def __init__(self, size):
+        self.size = size
+
+    @property
+    def fab_cons(self):
+        return round(self.size / 6.5 + 0.5, 2)
+
+class Costume(Clothes):
+    def __init__(self, height):
+        self.height = height
+
+    @property
+    def fab_cons(self):
+        return round(self.height * 2 + 0.3, 2)
+
+a = Coat(int(input('Укажите размер для пальто: ')))
+b = Costume(int(input('Укажите рост для костюма: ')))
+print('Общий расход ткани = ', a.fab_cons + b.fab_cons, end='')
