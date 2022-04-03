@@ -66,7 +66,7 @@ print(numbers)
 # task 4-6
 class Lab:
     """
-    проект "научно-исследовательская лаборатория
+    проект "научно-исследовательская лаборатория"
     """
 
     name = 'Laboratory of pharmacology'
